@@ -1,0 +1,19 @@
+<h1>Wagon Drive in - Food ordering</h1>
+<p>We're ordering at <a href="http://www.thuisbezorgd.nl/taco-mundo-amsterdam-nieuw-west">Taco Mundo</a></p>
+<p>Enter your choice and name <%= link_to "here", new_task_path %></p>
+
+<table class="table">
+  <tr>
+    <th>Task</th>
+    <th>Description</th> 
+    <th>Edit</th>
+  </tr>
+  <% @tasks.each do |task| %>
+  <tr>
+    <td><%= link_to task.name, task_path(task) %></td>
+    <td><%= task.content %></td>
+    <td><%= link_to "Edit", edit_task_path(task), class: "btn btn-primary" %></td>
+  </tr>
+  <% end %>
+</table>
+

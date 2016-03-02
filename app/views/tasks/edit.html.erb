@@ -1,0 +1,16 @@
+<h1>Tasks - edit</h1>
+<p>Edit a make post update</p>
+
+<p><%= @task.name %></p>
+<p><%= @task.content %></p>
+
+
+<%= form_for(@task) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+
+  <%= f.submit %>
+<% end %>
