@@ -1,6 +1,7 @@
-== README
+README
+======
 
-The drive-through is an application used to track group orders made to food-delivery services.
+### The drive-through is an application used to track group orders made to food-delivery services.
 
 
 
