@@ -9916,3 +9916,5 @@ Processing by TasksController#index as HTML
   [1m[35mTask Load (2.7ms)[0m  SELECT "tasks".* FROM "tasks"
   Rendered tasks/index.html.erb within layouts/application (7.3ms)
 Completed 200 OK in 365ms (Views: 341.8ms | ActiveRecord: 3.3ms)
+  [1m[36m (1.5ms)[0m  [1mDROP DATABASE IF EXISTS "my_database_development"[0m
+  [1m[36m (377.5ms)[0m  [1mCREATE DATABASE "my_database_development" ENCODING = 'utf8'[0m
