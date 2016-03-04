@@ -11,16 +11,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301104632) do
+ActiveRecord::Schema.define(version: 20160304162929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "tasks", force: :cascade do |t|
+  create_table "meals", force: :cascade do |t|
     t.string   "name"
-    t.string   "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "description"
+    t.integer  "price"
+    t.string   "options"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
+  add_index "meals", ["restaurant_id"], name: "index_meals_on_restaurant_id", using: :btree
+
+  create_table "ordering_sessions", force: :cascade do |t|
+    t.string   "buyer"
+    t.integer  "total_price"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "member"
+    t.integer  "ordering_session_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "orders", ["ordering_session_id"], name: "index_orders_on_ordering_session_id", using: :btree
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "category"
+    t.string   "url"
+    t.string   "address"
+    t.string   "phone_number"
+    t.integer  "rating"
+    t.integer  "ordering_session_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "restaurants", ["ordering_session_id"], name: "index_restaurants_on_ordering_session_id", using: :btree
+
+  add_foreign_key "meals", "restaurants"
+  add_foreign_key "orders", "ordering_sessions"
+  add_foreign_key "restaurants", "ordering_sessions"
 end
