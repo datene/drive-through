@@ -5,10 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-100.times do
-  task = Task.new(
-    name: Faker::Company.bs,
-    content: Faker::Hipster.sentence(25),
-  )
-  task.save
-end
+
+puts "deleting ordering_sessions"
+
+OrderingSession.delete_all
+
+puts "Adding ordering_sessions"
+
+10.times { OrderingSession.create!(buyer: Faker::Name.name)}
+
+puts "10 ordering_sessions added"

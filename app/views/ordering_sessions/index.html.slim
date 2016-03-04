@@ -1,0 +1,7 @@
+h1 All ordering sessions
+
+ul
+  - @ordering_sessions.each do |ordering_session|
+    li
+      = ordering_session.created_at.strftime("%d %b. %Y")
+      |  #{ordering_session.buyer} is buying
