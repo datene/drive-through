@@ -12,6 +12,6 @@ OrderingSession.delete_all
 
 puts "Adding ordering_sessions"
 
-10.times { OrderingSession.create!(buyer: "hello")}
+10.times { OrderingSession.create!(buyer: Faker::Name.name)}
 
 puts "10 ordering_sessions added"
